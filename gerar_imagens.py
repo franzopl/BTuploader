@@ -14,7 +14,7 @@ def obter_duracao_video(caminho_video):
         caminho_video
     ]
     try:
-        resultado = subprocess.run(comando, capture_output=True, text=True, check=True, timeout=30)
+        resultado = subprocess.run(comando, capture_output=True, text=True, check=True, timeout=60)
         dados = json.loads(resultado.stdout)
         return float(dados["format"]["duration"])
     except subprocess.TimeoutExpired:
@@ -64,14 +64,14 @@ def gerar_imagens(caminho_video):
             output_file = os.path.join(temp_dir, f"frame_{i:03d}.jpg")
             comando_ffmpeg = [
                 "ffmpeg",
+                "-ss", str(timestamp),  # Seek antes do input para maior eficiência
                 "-i", caminho_video,
-                "-ss", str(timestamp),  # Seek para o timestamp
                 "-frames:v", "1",      # Extrai 1 frame
                 "-q:v", "2",           # Qualidade alta
                 output_file,
                 "-y"                   # Sobrescreve arquivos existentes
             ]
-            subprocess.run(comando_ffmpeg, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
+            subprocess.run(comando_ffmpeg, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=60)
 
             # Faz upload para o ImgBB
             with open(output_file, "rb") as file:
@@ -81,7 +81,7 @@ def gerar_imagens(caminho_video):
                     "name": f"frame_{i}_{os.path.basename(caminho_video)}",
                 }
                 files = {"image": file}
-                resposta = requests.post(url, data=payload, files=files)
+                resposta = requests.post(url, data=payload, files=files, timeout=60)
                 resposta.raise_for_status()
 
                 dados = resposta.json()
