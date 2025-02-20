@@ -5,7 +5,7 @@ Este script no momento cria um arquivo .torrent, gera arquivo de mediainfo, loca
 
 Para utilizar o script será necessário instalar as dependências necessárias, execute o seguinte comando no terminal para instalar todas as bibliotecas listadas:
 
-    pip3 install -r requirements.txt
+        pip3 install -r requirements.txt
 
 Além das bibliotecas Python, o script depende de ferramentas externas que devem ser instaladas no sistema:
 
