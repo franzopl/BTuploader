@@ -4,6 +4,7 @@ from obter_info_midia import obter_info_midia
 from gerar_imagens import gerar_imagens
 from criar_mediainfo import criar_mediainfo, obter_idiomas_legendas
 import os
+import uploadmain
 
 def main():
     parser = argparse.ArgumentParser(
@@ -72,12 +73,22 @@ def main():
         
         print(f"Arquivo de informações salvo em: {caminho_txt}")
 
-        # Gera o arquivo .nfo com o mediainfo
-        caminho_nfo = criar_mediainfo(args.arquivo)
+        # Gera o arquivo .nfo e obtém o texto do mediainfo
+        caminho_nfo, texto_mediainfo = criar_mediainfo(args.arquivo)
         if caminho_nfo:
             print(f"Arquivo .nfo gerado: {caminho_nfo}")
         else:
             print("Falha ao gerar o arquivo .nfo.")
+
+        # Executa o uploadmain.py com os dados gerados
+        print("Iniciando o processo de upload...")
+        uploadmain.main(
+            caminho_torrent=caminho_torrent,
+            imdb_id=imdb_id,
+            links_imagens=links_imagens,
+            texto_mediainfo=texto_mediainfo
+        )
+
     else:
         print("Falha ao gerar o torrent.")
 
