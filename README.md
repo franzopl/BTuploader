@@ -31,7 +31,7 @@ ATENÇÃO: o arquivo .env guarda suas credenciais pessoais, não deve ser compar
 
     nano .env
 
-    TRACKER_URL=udp://tracker.openbittorrent.com:80
+    TRACKER_URL=udp://tracker.openbittorrent.com:80 #coloque aqui sua URL de announce fornecida pelo tracker
     TMDB_API_KEY=sua_chave_tmdb_aqui
     IMGBB_API_KEY=sua_chave_imgbb_aqui
 
