@@ -1,0 +1,22 @@
+# Arquivo .gitignore
+
+# Ignora o arquivo .env
+.env
+
+# Ignora arquivos .torrent gerados (opcional)
+*.torrent
+
+# Ignora arquivos Python compilados
+*.pyc
+__pycache__/
+
+# Ignora arquivos de log (opcional)
+*.log
+
+# Ignora diretórios de dependências (se usar virtualenv)
+venv/
+env/
+
+#ignora pastas geradas e de testes
+output/
+media/
