@@ -5,10 +5,11 @@ from dotenv import load_dotenv
 def criar_torrent(caminho_arquivo, caminho_saida=None):
     """
     Cria um arquivo .torrent usando libtorrent, com tracker_url vindo de um arquivo .env.
+    O arquivo .torrent será salvo na pasta './media' relativa ao script.
     
     Parâmetros:
     caminho_arquivo (str): Caminho do arquivo que será convertido em torrent
-    caminho_saida (str, opcional): Caminho onde o .torrent será salvo
+    caminho_saida (str, opcional): Caminho onde o .torrent será salvo (sobrescreve o padrão)
     
     Retorna:
     str: Caminho do arquivo .torrent criado
@@ -31,7 +32,7 @@ def criar_torrent(caminho_arquivo, caminho_saida=None):
         lt.add_files(fs, caminho_arquivo)
         
         # Cria o torrent com file_storage e piece_size diretamente
-        t = lt.create_torrent(fs, piece_size=8192 * 1024)  # 8 MB
+        t = lt.create_torrent(fs, piece_size=256 * 1024)  # 256 KB
         
         # Adiciona o tracker
         t.add_tracker(tracker_url)
@@ -42,9 +43,16 @@ def criar_torrent(caminho_arquivo, caminho_saida=None):
         # Gera o arquivo torrent
         torrent_data = t.generate()
         
-        # Define caminho de saída padrão
+        # Define o caminho de saída padrão na pasta ./media
         if caminho_saida is None:
-            caminho_saida = os.path.splitext(caminho_arquivo)[0] + ".torrent"
+            # Obtém o nome do arquivo sem o caminho completo
+            nome_arquivo = os.path.basename(caminho_arquivo)
+            # Constrói o caminho relativo ao diretório do script
+            diretorio_media = os.path.join(os.path.dirname(__file__), "media")
+            # Cria a pasta ./media se não existir
+            os.makedirs(diretorio_media, exist_ok=True)
+            # Define o caminho de saída como ./media/nome_arquivo.torrent
+            caminho_saida = os.path.join(diretorio_media, os.path.splitext(nome_arquivo)[0] + ".torrent")
         
         # Salva o arquivo
         with open(caminho_saida, "wb") as f:
