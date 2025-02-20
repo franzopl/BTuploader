@@ -4,6 +4,7 @@
 Este script no momento cria um arquivo .torrent, gera arquivo de mediainfo, localiza códigos do TMDB e IMDB do Vídeo, Extrai 6 imagens do vídeo, envia essas imagens ao imgbb através de API e salva todas as informações necessárias para o upload em um arquivo .txt
 
 Para utilizar o script será necessário instalar as dependências necessárias, execute o seguinte comando no terminal para instalar todas as bibliotecas listadas:
+
     pip3 install -r requirements.txt
 
 Além das bibliotecas Python, o script depende de ferramentas externas que devem ser instaladas no sistema:
