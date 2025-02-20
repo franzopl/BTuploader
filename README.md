@@ -10,7 +10,6 @@ Para utilizar o script será necessário instalar as dependências necessárias,
 Além das bibliotecas Python, o script depende de ferramentas externas que devem ser instaladas no sistema:
 
     FFmpeg: Para gerar imagens do vídeo em gerar_imagens.py. Instale com:
-    bash
 
         sudo dnf install ffmpeg  # Fedora
         sudo apt install ffmpeg # Ubuntu
