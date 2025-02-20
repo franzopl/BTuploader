@@ -20,3 +20,4 @@ env/
 #ignora pastas geradas e de testes
 output/
 media/
+temp_images/
