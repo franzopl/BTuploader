@@ -1,4 +1,4 @@
-#BTuploader
+# BTuploader
 
 
 Este script no momento cria um arquivo .torrent, gera arquivo de mediainfo, localiza códigos do TMDB e IMDB do Vídeo, Extrai 6 imagens do vídeo, envia essas imagens ao imgbb através de API e salva todas as informações necessárias para o upload em um arquivo .txt
