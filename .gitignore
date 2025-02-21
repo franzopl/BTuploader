@@ -9,6 +9,7 @@
 # Ignora arquivos Python compilados
 *.pyc
 __pycache__/
+main.spec
 
 # Ignora arquivos de log (opcional)
 *.log
@@ -21,3 +22,5 @@ env/
 output/
 media/
 temp_images/
+dist/
+build/
