@@ -23,11 +23,11 @@ MediaInfo: Para extrair informações do arquivo em criar_mediainfo.py.
 
 ## Configuração do script:
 
-Copie e renomeie o arquivo .example.env para .env e preencha suas credenciais:
+Copie e renomeie o arquivo template.env para .env e preencha suas credenciais:
 
 ATENÇÃO: o arquivo .env guarda suas credenciais pessoais, não deve ser compartilhado. 
 
-    cp .example.env .env
+    cp template.env .env
 
     nano .env
 
